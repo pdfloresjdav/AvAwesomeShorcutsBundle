@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * @author Leny BERNARD <leny@appventus.com>
  */
-class AwesomeController extends BaseController
+abstract class AwesomeController extends BaseController
 {
     protected $tool;
 
@@ -197,11 +197,6 @@ class AwesomeController extends BaseController
         }
 
         throw $this->createAccessDeniedException($message);
-    }
-
-    public function createAccessDeniedException($message = 'Access Denied', \Exception $previous = null) : AccessDeniedException
-    {
-        return new AccessDeniedException($message, $previous);
     }
 
     public function getCurrentUserOr403()
