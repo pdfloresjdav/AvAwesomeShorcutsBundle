@@ -1,5 +1,5 @@
 {
-    "name": "appventus/shortcuts-bundle",
+    "name": "pdfloresjdav/shortcuts-bundle",
     "type": "symfony-bundle",
     "description": "Symfony ShortcutsBundle",
     "keywords": ["controller"],
