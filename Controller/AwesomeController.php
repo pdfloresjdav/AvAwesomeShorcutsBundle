@@ -192,7 +192,7 @@ abstract class AwesomeController extends BaseController
 
     public function isGrantedOr403($attributes, $object = null, $message = null)
     {
-        if ($this->get('security.context')->isGranted($attributes, $object)) {
+        if ($this->get('security.authorization_checker')->isGranted($attributes, $object)) {
             return;
         }
 
@@ -217,7 +217,7 @@ abstract class AwesomeController extends BaseController
      */
     public function getUser()
     {
-        if (null === $token = $this->container->get('security.context')->getToken()) {
+        if (null === $token = $this->container->get('security.token_storage')->getToken()) {
             return;
         }
 
