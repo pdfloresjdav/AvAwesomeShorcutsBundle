@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * @author Leny BERNARD <leny@appventus.com>
  */
-abstract class AwesomeController extends BaseController
+class AwesomeController extends BaseController
 {
     protected $tool;
 
@@ -91,9 +91,9 @@ abstract class AwesomeController extends BaseController
         $this->get('av.shortcuts')->setFlash($name, $value);
     }
 
-    public function isGranted($attributes, $object = null)
+    public function isGranted($attributes, $object = null) : bool
     {
-        return $this->get('security.context')->isGranted($attributes, $object);
+        return $this->get('security.authorization_checker')->isGranted($attributes, $object);
     }
 
     public function getSession($name, $default = null)
@@ -199,7 +199,7 @@ abstract class AwesomeController extends BaseController
         throw $this->createAccessDeniedException($message);
     }
 
-    public function createAccessDeniedException($message = 'Access Denied', \Exception $previous = null)
+    public function createAccessDeniedException($message = 'Access Denied', \Exception $previous = null) : AccessDeniedException
     {
         return new AccessDeniedException($message, $previous);
     }
