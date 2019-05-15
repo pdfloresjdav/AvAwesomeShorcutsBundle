@@ -1,0 +1,18 @@
+{
+    "require_all":
+    {
+        "stylesheets":
+        {
+            "redactor": "@AvAwesomeShortcutsBundle/Resources/public/libs/redactor/redactor.css"
+        },
+        "javascripts":
+        {
+            "redactor":
+            [
+                "@AvAwesomeShortcutsBundle/Resources/public/libs/redactor/redactor.js",
+                "@AvAwesomeShortcutsBundle/Resources/public/libs/redactor/redactor.fr.js",
+                "@AvAwesomeShortcutsBundle/Resources/public/libs/redactor/plugins/video.js"
+            ]
+        }
+    }
+}

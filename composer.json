@@ -1,0 +1,23 @@
+{
+    "name": "appventus/shortcuts-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony ShortcutsBundle",
+    "keywords": ["controller"],
+    "homepage": "http://appventus.com/bundles/shortcuts",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leny Bernard (AppVentus)",
+            "email": "leny@appventus.com",
+            "homepage": "http://appventus.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/class-loader": "2.4.*"
+    },
+    "autoload": {
+        "psr-0": { "AppVentus\\Awesome\\ShortcutsBundle": "" }
+    },
+    "target-dir": "AppVentus/Awesome/ShortcutsBundle",
+    "minimum-stability": "dev"
+}

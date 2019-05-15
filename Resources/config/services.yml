@@ -1,0 +1,79 @@
+services:
+    kernel.listener.preExecute:
+        class: AppVentus\Awesome\ShortcutsBundle\Listener\ControllerListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: preExecuteController }
+
+    av.tool:
+        class: AppVentus\Awesome\ShortcutsBundle\Utils\Utils
+    av.shortcuts:
+        class: AppVentus\Awesome\ShortcutsBundle\Service\ShortcutService
+        arguments:
+            - "@?white_october.swiftmailer_db.spool"
+            - "@mailer"
+            - "@session"
+            - "@router"
+    av.form_error_service:
+        class: AppVentus\Awesome\ShortcutsBundle\Service\FormErrorService
+        arguments:
+            - "@translator"
+            - "%kernel.debug%"
+    gedmo.urlizer:
+        class: Gedmo\Sluggable\Util\Urlizer
+
+    av.date.moment_format_converter:
+        class: AppVentus\Awesome\ShortcutsBundle\Date\MomentFormatConverter
+
+    # Form
+    av.form.type.daterange:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DateRangeType
+        arguments:
+            - "@translator"
+        tags:
+            - { name: form.type, alias: awesome_type_date_range }
+
+    av.form.type.datetime_range:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DateTimeRangeType
+        arguments:
+            - "@translator"
+        tags:
+            - { name: form.type, alias: awesome_type_datetime_range }
+
+    av.form.type.date_picker:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DatePickerType
+        arguments:
+            - "@av.date.moment_format_converter"
+        tags:
+            - { name: form.type, alias: awesome_type_date_picker }
+
+    av.form.type.datetime_picker:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DateTimePickerType
+        arguments:
+            - "@av.date.moment_format_converter"
+        tags:
+            - { name: form.type, alias: awesome_type_datetime_picker }
+
+    form.type.datemask:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DatemaskType
+        tags:
+            - { name: form.type, alias: datemask }
+    form.type.datemaskpicker:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\DatemaskpickerType
+        tags:
+            - { name: form.type, alias: datemaskpicker }
+    form.type.redactor:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\RedactorType
+        tags:
+            - { name: form.type, alias: redactor }
+
+    form.type.select2:
+        class: AppVentus\Awesome\ShortcutsBundle\Form\Type\Select2Type
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: form.type, alias: select2 }
+
+    twig.awesome_extension:
+        class: AppVentus\Awesome\ShortcutsBundle\Twig\AwesomeExtension
+        tags:
+            - { name: twig.extension }
